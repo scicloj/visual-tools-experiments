@@ -13,8 +13,6 @@
           value)]
     (portal/submit value-to-submit)))
 
-(portal/submit 9)
-
 (defn handle [{:keys [event-type]
                :as event}]
   (case event-type

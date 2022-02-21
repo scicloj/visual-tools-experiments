@@ -8,3 +8,5 @@
 [:portal.viewer/hiccup [:h1 "hi!"]]
 
 [:portal.viewer/code "{:x 9 :y [(+ 1 2)]}"]
+
+[:portal.viewer/tree {:x 9 :y [(+ 1 2)]}]
