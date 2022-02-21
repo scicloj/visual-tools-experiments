@@ -1,5 +1,7 @@
 A small experiment in sending code to [Portal](github.com/djblue/portal) through an nREPL middleware (implementation roughly extracted out of [Notespace](github.com/scicloj/notespace/)).
 
+![screenshot](./screehshot1.png)
+
 ## Usage
 
 Run the Clojure REPL with the `nrepl` alias:
@@ -25,3 +27,5 @@ Then, evaluate expressions and see them rendered in Portal:
 ```
 
 See also `src/example.clj`.
+
+
