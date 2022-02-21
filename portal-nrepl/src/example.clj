@@ -23,8 +23,16 @@
 
 
 
-[:h1
- "A plot:"
+
+
+
+
+
+
+
+
+[:div
+ [:h1 "A plot:"]
  [:portal.viewer/vega-lite
   {:data {:values
           (->> (repeatedly 200 #(- (rand) 0.5))
