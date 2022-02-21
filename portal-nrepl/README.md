@@ -1,6 +1,6 @@
 A small experiment in sending code to [Portal](github.com/djblue/portal) through an nREPL middleware (implementation roughly extracted out of [Notespace](github.com/scicloj/notespace/)).
 
-![screenshot](./screehshot1.png)
+![screenshot](./screenshot1.png)
 
 ## Usage
 
