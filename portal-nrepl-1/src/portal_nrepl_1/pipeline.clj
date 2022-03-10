@@ -22,8 +22,9 @@
   (portal/open)
   (let [events-channel         (async/chan 100)]
     (async/go-loop []
-      (handler (async/<! events-channel))
-      (recur))
+      (when-let [event (async/<! events-channel)]
+        (handler event)
+        (recur)))
     {:stop (fn []
              (async/close! events-channel))
      :process (fn [event]
