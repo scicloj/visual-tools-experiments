@@ -69,6 +69,7 @@
 (comment
   (clerk/serve! {})
   (clerk/clear-cache!)
+  (clerk/build-static-app! {:paths ["src/example.clj"]})
   ,)
 
 ;; ## Specifying kinds
