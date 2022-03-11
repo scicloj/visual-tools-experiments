@@ -2,7 +2,6 @@
   (:require [nrepl.core :as nrepl]
             [nrepl.middleware :as middleware]
             [nrepl.middleware.print :as print]
-            [nrepl.middleware.dynamic-loader :as dynamic-loader]
             [nrepl.transport :as transport]
             [portal-clerk-kindly-nrepl-1.pipeline :as pipeline]))
 

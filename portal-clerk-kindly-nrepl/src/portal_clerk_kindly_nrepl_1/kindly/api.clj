@@ -1,26 +1,20 @@
 (ns portal-clerk-kindly-nrepl-1.kindly.api
   (:require [portal-clerk-kindly-nrepl-1.kindly.kind :as kind]
-            [portal-clerk-kindly-nrepl-1.kindly.kindness :as kindness]))
-
-(def *kind->behaviour (atom {}))
+            [portal-clerk-kindly-nrepl-1.kindly.kindness :as kindness]
+            [portal-clerk-kindly-nrepl-1.kindly.behaviours :as behaviours]
+            [portal-clerk-kindly-nrepl-1.kindly.checks :as checks]))
 
 (defn define-kind-behaviour! [kind behaviour]
-  (swap! *kind->behaviour
-         update kind
-         merge behaviour)
-  (intern 'portal-clerk-kindly-nrepl-1.kindly.kind (symbol (name kind)) kind))
+  (behaviours/define-kind-behaviour! kind behaviour))
 
 (defn kind->behaviour [kind]
-  (@*kind->behaviour kind))
-
+  (behaviours/kind->behaviour kind))
 
 (defn consider [value kind]
   (vary-meta value assoc :kindly/kind kind))
 
-
-
 (defn kinds-set []
-  (set (keys @*kind->behaviour)))
+  (set (keys @behaviours/*kind->behaviour)))
 
 (defn code->kind [code]
   (when-let [m (some-> code
@@ -51,3 +45,6 @@
            code->kind)
        (-> value
            value->kind))))
+
+(defn check [value & predicate-and-args]
+  (apply checks/check value predicate-and-args))

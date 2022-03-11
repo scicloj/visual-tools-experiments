@@ -1,6 +1,6 @@
 (ns portal-clerk-kindly-nrepl-1.view.portal
   (:require [portal-clerk-kindly-nrepl-1.kindly.api :as kindly]
-            [clojure.walk :as walk]))
+            [portal-clerk-kindly-nrepl-1.walk :as walk]))
 
 (kindly/define-kind-behaviour! :kind/hiccup
   {:portal.viewer (fn [v]
@@ -18,12 +18,12 @@
 (defn prepare [value code]
   (let [v (if-let [code-kind (kindly/code->kind code)]
             (maybe-apply-viewer value code-kind)
-            (-> value
-                (->> (walk/postwalk
-                      (fn [subvalue]
-                        (->> subvalue
-                             kindly/kind
-                             (maybe-apply-viewer value)))))))]
+            (->> value
+                 (walk/postwalk
+                  (fn [subvalue]
+                    (->> subvalue
+                         kindly/kind
+                         (maybe-apply-viewer subvalue))))))]
     (if (and (vector? v)
              (-> v first keyword?)
              (-> v first namespace (= "portal.viewer")))

@@ -14,7 +14,7 @@
         (fn [subvalue]
           (->> subvalue
                kindly/kind
-               (maybe-apply-viewer value))))))
+               (maybe-apply-viewer subvalue))))))
 
 (defn setup! []
   (clerk/set-viewers!
@@ -25,7 +25,8 @@
                      (let [dv @v]
                        (if (kindly/kind dv)
                          (prepare dv)
-                         dv)))}]))
+                         dv)))}])
+  :ok)
 
 (kindly/define-kind-behaviour! :kind/hiccup
   {:clerk.viewer (fn [v]
