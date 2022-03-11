@@ -33,7 +33,7 @@
 
 ;; Kindly is used to specify the kinds of things, where kinds determine their visual behaviour in different tools.
 
-;; Another aspect explored in this experiment is interacting with Portal through nREPL middleware listening to the user evaluations of code in the IDE, thus avoiding the need to send values through `tap>`. For a more basic experiment with this aspect, see the [portal-nrepl-1 experiment](https://github.com/scicloj/visual-tools-experiments/tree/main/portal-nrepl-1).
+;; Another aspect explored in this experiment is interacting with Portal through [nREPL](https://nrepl.org) middleware listening to the user evaluations of code in the IDE, thus avoiding the need to send values through `tap>`. For a more basic experiment with this aspect, see the [portal-nrepl-1 experiment](https://github.com/scicloj/visual-tools-experiments/tree/main/portal-nrepl-1).
 
 ;; ## Setup
 
