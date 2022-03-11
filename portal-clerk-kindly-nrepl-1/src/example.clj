@@ -202,3 +202,11 @@
 ;; A similar solution for literate unit tests (or rather, testable documents) has been used in ClojisR -- see for example [this tutorial](https://scicloj.github.io/clojisr/doc/clojisr/v1/tutorial-test) ([source](https://github.com/scicloj/clojisr/blob/master/test/clojisr/v1/tutorial_test.clj)).
 
 ;; One idea we are considering is integrating it with a so-called doctest solution, so that standard `clojure.test` unit-tests would be automatically generated from this code.
+
+;; ## What now
+
+;; Our plan is to continue experimenting and have some dialogue around such attempts, and hopefully reach some common understanding regarding such compatibility layers.
+
+;; Hoping to see you at the [visual-tools group](https://scicloj.github.io/docs/community/groups/visual-tools/)!
+
+;; Any feedback would help.
