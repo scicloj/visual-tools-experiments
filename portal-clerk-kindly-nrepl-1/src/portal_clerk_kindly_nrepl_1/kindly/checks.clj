@@ -9,28 +9,33 @@
                 [:big {:style {:color "darkred"}}
                  "❌"])]])
 
-(defn test-boolean->hiccup [bool]
+(defn check-boolean->hiccup [bool]
   [:div
-   (bool->symbol bool)
-   (str "   " bool)])
+   (bool->symbol bool)])
+
+(defn value-and-check->hiccup [{:keys [value check]}]
+  [:div
+   value
+   (-> check
+       check-boolean->hiccup)])
 
 (behaviours/define-kind-behaviour!
   :kind/check
-  {:portal.viewer (fn [v]
-                    [:portal.viewer/hiccup (-> v
-                                               :result
-                                               test-boolean->hiccup)])
-   :clerk.viewer (fn [v]
-                   (-> v
-                       :result
-                       test-boolean->hiccup
-                       clerk/html))})
+  {:portal.viewer (fn [value-and-check]
+                    (->> value-and-check
+                         value-and-check->hiccup
+                         (vector :portal.viewer/hiccup)))
+   :clerk.viewer (fn [value-and-check]
+                   (->> value-and-check
+                        value-and-check->hiccup
+                        clerk/html))})
 
 (defn check [value & predicate-and-args]
-  (-> {:result (-> (if predicate-and-args
-                     (apply (first predicate-and-args)
-                            value
-                            (rest predicate-and-args))
-                     value)
-                   (if true false))}
+  (-> {:value value
+       :check (-> (if predicate-and-args
+                    (apply (first predicate-and-args)
+                           value
+                           (rest predicate-and-args))
+                    value)
+                  (if true false))}
       (vary-meta assoc :kindly/kind :kind/check)))
