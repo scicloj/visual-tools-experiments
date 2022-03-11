@@ -48,11 +48,13 @@
 
 ;;; ### Portal
 
-;; Let us start the event pipeline that would pass user evaluation to Portal.
+;; Let us start the event pipeline that would pass code evaluations to Portal.
 ;; This will also open the Portal view.
 (pipeline/start)
 
-;; For this to work, you need to use an nREPL-based Clojure environment (e.g., CIDER, Calva). You also need to run your repl with the `-M:nrepl` [alias](https://github.com/scicloj/visual-tools-experiments/blob/main/portal-clerk-kindly-nrepl-1/deps.edn#L5).
+;; Now, evaluating code in your REPL would send the values to be visualized in Portal.
+
+;; For this to work, you need to use an nREPL-based Clojure environment (e.g., CIDER, Calva). You also need to run your REPL with the `-M:nrepl` [alias](https://github.com/scicloj/visual-tools-experiments/blob/main/portal-clerk-kindly-nrepl-1/deps.edn#L5).
 
 ;; For troubleshootimg, it might be useful to restart the pipeline:
 (comment
@@ -132,34 +134,48 @@
   (-> [:small "hello"]
       (kindly/consider kind/hiccup)))
 
+
+
+
 ;; ## Nesting
+
 
 ;; Both Portal and Clerk support nesting of viewer types. So, for example, we can nest specs of `kind/vega-lite` inside one spec of `kind/hiccup`.
 
-(defn vega-lite-spec [n]
-  (-> {:data {:values
-              (->> (repeatedly n #(- (rand) 0.5))
-                   (reductions +)
-                   (map-indexed (fn [x y]
-                                  {:w (rand-int 9)
-                                   :z (rand-int 9)
-                                   :x x
-                                   :y y})))},
-       :mark "point"
-       :encoding
-       {:size {:field "w" :type "quantitative"}
-        :x {:field "x", :type "quantitative"},
-        :y {:field "y", :type "quantitative"},
-        :fill {:field "z", :type "nominal"}}}
-      (kindly/consider kind/vega-lite)))
+(def vega-lite-spec
+  (memoize
+   (fn [n]
+     (-> {:data {:values
+                 (->> (repeatedly n #(- (rand) 0.5))
+                      (reductions +)
+                      (map-indexed (fn [x y]
+                                     {:w (rand-int 9)
+                                      :z (rand-int 9)
+                                      :x x
+                                      :y y})))},
+          :mark "point"
+          :encoding
+          {:size {:field "w" :type "quantitative"}
+           :x {:field "x", :type "quantitative"},
+           :y {:field "y", :type "quantitative"},
+           :fill {:field "z", :type "nominal"}}}
+         (kindly/consider kind/vega-lite)))))
+
 
 (-> (->> [10 100 1000]
          (map (fn [n]
-                [:div
+                [:div {:style {:width "400px"}}
                  [:h1 (str "n=" n)]
                  (vega-lite-spec n)]))
          (into [:div]))
     (kindly/consider kind/hiccup))
+
+
+
+
+
+
+
 
 ;; ## Unit tests
 

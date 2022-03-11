@@ -4,14 +4,4 @@ A small experiment in creating a workflow for using visual different tools, such
 
 Video - coming soon
 
-
-
-
-
-
-
-
-
-
-
-
+![screenshot](./screenshot1.png)
