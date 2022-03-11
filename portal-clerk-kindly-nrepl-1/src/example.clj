@@ -179,8 +179,6 @@
 
 ;; ## Unit tests
 
-;; (TODO: This seems to fail in Clerk static rendering, but not locally. Need to understand why.)
-
 ;; The `kindly/check` function allows to test some assumptions and return a value of kind `kind/check`, that is rendered appropriately.
 
 (-> 2
