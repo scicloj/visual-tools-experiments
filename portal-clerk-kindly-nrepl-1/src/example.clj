@@ -203,10 +203,10 @@
 
 ;; One idea we are considering is integrating it with a so-called doctest solution, so that standard `clojure.test` unit-tests would be automatically generated from this code.
 
-;; ## What now
+;; ## Continuing
 
-;; Our plan is to continue experimenting and have some dialogue around such attempts, and hopefully reach some common understanding regarding such compatibility layers.
-
-;; Hoping to see you at the [visual-tools group](https://scicloj.github.io/docs/community/groups/visual-tools/)!
+;; Our plan is to continue experimenting and have some dialogue around such attempts. Hopefully, we can reach some common understanding regarding such compatibility layers.
 
 ;; Any feedback would help.
+
+;; Hoping to see you at the [visual-tools group](https://scicloj.github.io/docs/community/groups/visual-tools/)!
