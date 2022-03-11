@@ -54,7 +54,7 @@
 
 ;; Now, evaluating code in your REPL would send the values to be visualized in Portal.
 
-;; For this to work, you need to use an nREPL-based Clojure environment (e.g., CIDER, Calva). You also need to run your REPL with the `-M:nrepl` [alias](https://github.com/scicloj/visual-tools-experiments/blob/main/portal-clerk-kindly-nrepl-1/deps.edn#L5).
+;; For this to work, you need to use an nREPL-based Clojure environment (e.g., CIDER, Calva), or any Clojure REPL that sends evaluations through nREPL. You also need to run your REPL with the `-M:nrepl` [alias](https://github.com/scicloj/visual-tools-experiments/blob/main/portal-clerk-kindly-nrepl-1/deps.edn#L5).
 
 ;; For troubleshootimg, it might be useful to restart the pipeline:
 (comment
