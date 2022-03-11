@@ -29,7 +29,7 @@
 
 ;; We demonstrate writing one namespace that - with just a little extra setup - can be rendered at both [Portal](https://github.com/djblue/portal) (for dynamic data navigation and visualization) and [Clerk](https://github.com/nextjournal/clerk) (for documentation through literate programming).
 
-;; The solution is based on parts of [Notespace](github.com/scicloj/notespace/) and [Kindly](github.com/scicloj/kindly). For clarity, we avoid those dependencies, and include a self-contained version of the relevant functionality here in the repo.
+;; The solution is based on parts of [Notespace](https://github.com/scicloj/notespace/) and [Kindly](https://github.com/scicloj/kindly). For clarity, we avoid those dependencies, and include a self-contained version of the relevant functionality here in the repo. We also adapt the kindly API a little bit, to fit the current intentions.
 
 ;; Kindly is used to specify the kinds of things, where kinds determine their visual behaviour in different tools.
 
