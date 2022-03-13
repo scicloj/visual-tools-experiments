@@ -2,6 +2,6 @@ A small experiment in creating a workflow for using visual different tools, such
 
 [Walkthrough](https://scicloj.github.io/visual-tools-experiments/portal-clerk-kindly-nrepl-1/public/build/#/src/example.clj) ([source](https://github.com/scicloj/visual-tools-experiments/blob/main/portal-clerk-kindly-nrepl-1/src/example.clj))
 
-Video - coming soon
+[Video](https://www.youtube.com/watch?v=e3M4u1XIVTo)
 
 ![screenshot](./screenshot1.png)
