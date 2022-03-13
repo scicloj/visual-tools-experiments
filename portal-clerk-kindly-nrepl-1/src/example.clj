@@ -70,9 +70,9 @@
 ;; Some useful Clerk commands for the Clerk workflow:
 (comment
   (clerk/serve! {})
+  (clerk/show! "src/example.clj")
   (clerk/clear-cache!)
-  (clerk/build-static-app! {:paths ["src/example.clj"]})
-  ,)
+  (clerk/build-static-app! {:paths ["src/example.clj"]}))
 
 ;; ## Specifying kinds
 
@@ -130,9 +130,9 @@
        9)
 
 (delay
-  (Thread/sleep 500)
-  (-> [:small "hello"]
-      (kindly/consider kind/hiccup)))
+ (Thread/sleep 500)
+ (-> [:small "hello"]
+     (kindly/consider kind/hiccup)))
 
 
 
