@@ -2,6 +2,8 @@
 
 ;; This small experiment, [portal-clerk-kindly-nrepl-1](https://github.com/scicloj/visual-tools-experiments/tree/main/portal-clerk-kindly-nrepl-1), explores one possible path towards compatibility between different Clojure visual tools.  It is part of our explorations at the [visual-tools group](https://scicloj.github.io/docs/community/groups/visual-tools/).
 
+;; See also the [video demo](https://www.youtube.com/watch?v=e3M4u1XIVTo).
+
 ;; ## The problem
 
 ;; Clojure has [an amazing diversity](https://scicloj.github.io/docs/resources/libs/#visual-tools-literate-programming-and-data-visualization) of tools for data visualization and literate programming.
