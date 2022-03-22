@@ -26,10 +26,12 @@
 
 
 
-
 (defn plot [spec]
   (-> spec
-      clojisr-plotting/plot->svg
-      clerk/html))
+      clojisr-plotting/plot->buffered-image
+      ;; clojisr-plotting/plot->svg
+      ;; clerk/html
+      ))
+
 
 ;; TODO: make it generic

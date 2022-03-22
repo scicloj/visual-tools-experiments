@@ -11,19 +11,31 @@
 
 (def *notes (atom []))
 
+(defn get-value-with-id! [value]
+  (let [blob-id (str (java.util.UUID/randomUUID))
+        value-with-id #:nextjournal{:value value
+                                    :blob-id blob-id}]
+    (swap! webserver/!doc
+           (fn [doc]
+             (cond-> doc
+               (not (:blob->result doc)) (assoc
+                                          :blob->result {})
+               true (assoc-in
+                     [:blob->result blob-id] value-with-id))))
+    value-with-id))
+
 (defn sync-notes! [notes]
-  (let [doc {:doc
-             {:nextjournal/viewer :clerk/notebook,
-              :nextjournal/value
-              {:blocks
-               (->> notes
-                    (mapv (fn [{:keys [value]}]
-                            (view/->result
-                             *ns*
-                             #:nextjournal{:value value}
-                             true))))}}}]
-    (spit "/tmp/notebox-doc.edn" doc)
-    (webserver/broadcast! doc)))
+  (webserver/broadcast!
+   {:doc
+    {:nextjournal/viewer :clerk/notebook,
+     :nextjournal/value
+     {:blocks
+      (->> notes
+           (mapv (fn [{:keys [value]}]
+                   (view/->result
+                    *ns*
+                    (get-value-with-id! value)
+                    true))))}}}))
 
 (defn swap-notes! [f]
   (swap! *notes f)

@@ -8,7 +8,8 @@
 
 (defn open []
   ;; (portal/open)
-  (clerk/serve! {:browse? true}))
+  (clerk/serve! {;; :browse? true
+                 }))
 
 (defn close []
   ;; (portal/close)
