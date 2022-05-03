@@ -1,7 +1,7 @@
 
 This experiment records an interesting behaviour that emerges in a certain combination of [Clerk's](https://github.com/nextjournal/clerk) cache, [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset)'s [Columns](https://github.com/techascent/tech.ml.dataset/blob/master/src/tech/v3/dataset/impl/column.clj), and [Tablecloth](https://github.com/scicloj/tablecloth).
 
-The behaviour was discovered by Ethan Miller on his work on Tablecloth's upcoming column API together with [Clay](https://github.com/scicloj/clay). Eventually we peeled out the phenomenon to a more basic setup, where Clay is not involved.
+The behaviour was discovered by Ethan Miller on his work on Tablecloth's upcoming column API together with [Clay](https://github.com/scicloj/clay). After various explorations we have reached this simpler demonstration of the phenomenon, where Clay is not involved.
 
 ## Brief description
 
