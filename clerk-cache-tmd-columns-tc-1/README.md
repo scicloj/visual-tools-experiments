@@ -7,7 +7,7 @@ The behaviour was discovered by Ethan Miller on his work on Tablecloth's upcomin
 
 When loaded from Clerk's cache on disk, Columns are displayed differently if the Tablecloth API is `require`d.
 
-## Detailed description
+## Process
 
 1. Run the REPl once, and show the notebook:
 
@@ -23,7 +23,7 @@ nil
 notebook>
 ```
 
-2. Restart the REPl once, and show the notebook again (by the same command).
+2. Restart the REPl once, and show the notebook again (by the same process).
 
 3. Clear Clerk's cache, and show the notebook again.
 
@@ -37,17 +37,24 @@ nil
 notebook> 
 ```
 
+## Experienced results
+
 In 1, 3, the Column created in `srcnotebook.clj` is displayed as a list:
 
 ```clj
 (0 1 2 3)
 ```
 
-In 2, it is displayed as a map, supposedly a certain map representation of the tech.ml.dataset Column:
+In 2, it is displayed as a map, which looks like a map representation of the tech.ml.dataset Column datatype:
 
 ```clj
-{:tech.v3.dataset/data #array-buffer<int64>[4] [0, 1, 2, 3] :tech.v3.dataset/force-datatype? true :tech.v3.dataset/missing {} :tech.v3.dataset/name nil}
+{:tech.v3.dataset/data #array-buffer<int64>[4] [0, 1, 2, 3] 
+ :tech.v3.dataset/force-datatype? true 
+ :tech.v3.dataset/missing {} 
+ :tech.v3.dataset/name nil}
 ```
 
-Interestingly, if we remove `tablecloth.api` from the `require`d namespaces at `src/notebook.clj`, we do not experience this difference.
+## Variation
+
+Interestingly, if we remove `tablecloth.api` from the `require`d namespaces at `src/notebook.clj`, then we do not experience this difference.
 
