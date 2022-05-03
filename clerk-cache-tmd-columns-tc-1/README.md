@@ -13,7 +13,7 @@ When loaded from Clerk's cache on disk, Columns are displayed differently if the
 
 ## Process
 
-1. Run the REPl once, and show the notebook:
+1. Run the REPL once, and show the notebook:
 
 ```clj
 user> (require 'nextjournal.clerk)
@@ -27,7 +27,7 @@ nil
 notebook>
 ```
 
-2. Restart the REPl once, and show the notebook again (by the same process).
+2. Restart the REPL once, and show the notebook again (by the same process).
 
 3. Clear Clerk's cache, and show the notebook again.
 
@@ -41,7 +41,7 @@ nil
 notebook> 
 ```
 
-## Experienced results
+## Results
 
 In 1, 3, the Column created in `srcnotebook.clj` is displayed as a list:
 
@@ -80,6 +80,7 @@ user=> (-> (range 4)
     column/new-column
     nippy/freeze
     nippy/thaw)
+
 #:tech.v3.dataset{:name nil, :missing {}, :force-datatype? true, :data #array-buffer<int64>[4]
 [0, 1, 2, 3]}
 
@@ -88,10 +89,11 @@ user=> (-> (range 4)
     nippy/freeze
     nippy/thaw
     type)
+
 clojure.lang.PersistentArrayMap
 
 
 
 ```
 
-If we do not require `tech.v3.dataset`, we avoid this broken Nippy behaviour, and under Clerk, would get some default Nippy behaviour that behaves differently.
+(In the variation above, when we do not require the `tech.v3.dataset` namespace, we avoid this Nippy behaviour, and under Clerk, would get some default Nippy behaviour that behaves differently.)
