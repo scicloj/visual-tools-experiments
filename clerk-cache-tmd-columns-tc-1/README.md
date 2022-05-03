@@ -5,7 +5,7 @@ The behaviour was discovered by Ethan Miller on his work on Tablecloth's upcomin
 
 ## Brief description
 
-A brief description of what we experienced: When loaded from Clerk's cache on disk, Columns are displayed differently if the Tablecloth API is `require`d.
+When loaded from Clerk's cache on disk, Columns are displayed differently if the Tablecloth API is `require`d.
 
 ## Detailed description
 
