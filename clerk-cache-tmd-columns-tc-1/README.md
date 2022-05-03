@@ -3,6 +3,8 @@ This experiment records an interesting behaviour that emerges in a certain combi
 
 The behaviour was discovered by Ethan Miller on his work on Tablecloth's upcoming column API together with [Clay](https://github.com/scicloj/clay). After various explorations we have reached this simpler demonstration of the phenomenon, where Clay is not involved.
 
+Probably, it is related to the way Columns are serialized/deserialized by Nippy -- maybe there is some inconsistency between tech.ml.dataset to Tablecloth.
+
 ## Brief description
 
 When loaded from Clerk's cache on disk, Columns are displayed differently if the Tablecloth API is `require`d.
