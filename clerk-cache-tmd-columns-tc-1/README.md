@@ -5,7 +5,7 @@ This experiment records an interesting behaviour that emerges in a certain combi
 
 The behaviour was discovered by Ethan Miller in his work on Tablecloth's upcoming column API together with [Clay](https://github.com/scicloj/clay). After various explorations we have reached this simpler demonstration of the phenomenon, where Clay is not involved.
 
-The explanation is related to the way Columns are serialized/deserialized by [Nippy](https://github.com/ptaoussanis/nippy) -- see below.
+The [explanation](https://github.com/scicloj/visual-tools-experiments/tree/main/clerk-cache-tmd-columns-tc-1#explanation) is related to the way Columns are serialized/deserialized by [Nippy](https://github.com/ptaoussanis/nippy).
 
 ## Brief description
 
