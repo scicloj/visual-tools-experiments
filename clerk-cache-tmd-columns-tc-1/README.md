@@ -97,3 +97,5 @@ clojure.lang.PersistentArrayMap
 ```
 
 (In the variation above, when we do not require the `tech.v3.dataset` namespace, we avoid this Nippy behaviour, and under Clerk, would get some default Nippy behaviour that behaves differently.)
+
+Created an issue: https://github.com/techascent/tech.ml.dataset/issues/298
