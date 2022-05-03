@@ -1,2 +1,2 @@
 {:deps {io.github.nextjournal/clerk {:mvn/version "0.7.418"}
-        scicloj/tablecloth {:mvn/version "6.076"}}}
+        techascent/tech.ml.dataset {:mvn/version "6.085"}}}

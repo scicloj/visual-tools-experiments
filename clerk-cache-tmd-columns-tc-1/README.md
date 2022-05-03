@@ -1,13 +1,15 @@
 
-This experiment records an interesting behaviour that emerges in a certain combination of [Clerk's](https://github.com/nextjournal/clerk) cache, [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset)'s [Columns](https://github.com/techascent/tech.ml.dataset/blob/master/src/tech/v3/dataset/impl/column.clj), and [Tablecloth](https://github.com/scicloj/tablecloth).
+This experiment records an interesting behaviour that emerges in a certain combination of [Clerk's](https://github.com/nextjournal/clerk) cache and [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset)'s [Columns](https://github.com/techascent/tech.ml.dataset/blob/master/src/tech/v3/dataset/impl/column.clj).
 
-The behaviour was discovered by Ethan Miller on his work on Tablecloth's upcoming column API together with [Clay](https://github.com/scicloj/clay). After various explorations we have reached this simpler demonstration of the phenomenon, where Clay is not involved.
+(The project name hints at [Tablecloth](https://github.com/scicloj/tablecloth) too, but it turns out it is irrelevant to the situation.)
 
-Probably, it is related to the way Columns are serialized/deserialized by Nippy -- maybe there is some inconsistency between tech.ml.dataset to Tablecloth.
+The behaviour was discovered by Ethan Miller in his work on Tablecloth's upcoming column API together with [Clay](https://github.com/scicloj/clay). After various explorations we have reached this simpler demonstration of the phenomenon, where Clay is not involved.
+
+The explanation is related to the way Columns are serialized/deserialized by [Nippy](https://github.com/ptaoussanis/nippy) -- see below.
 
 ## Brief description
 
-When loaded from Clerk's cache on disk, Columns are displayed differently if the Tablecloth API is `require`d.
+When loaded from Clerk's cache on disk, Columns are displayed differently if the `tech.v3.dataset` is `require`d.
 
 ## Process
 
@@ -58,5 +60,38 @@ In 2, it is displayed as a map, which looks like a map representation of the tec
 
 ## Variation
 
-Interestingly, if we remove `tablecloth.api` from the `require`d namespaces at `src/notebook.clj`, then we do not experience this difference.
+Interestingly, if we remove `tech.v3.dataset` from the `require`d namespaces at `src/notebook.clj`, then we do not experience this difference.
 
+## Explanation
+
+The current (version "6.085") tech.ml.dataset serialization/deserialization of Columns seems broken:
+
+```clj
+$ clj -Sdeps '{:deps {techascent/tech.ml.dataset {:mvn/version "6.085"}}}'
+Clojure 1.10.3
+
+user=> (require '[taoensso.nippy :as nippy]
+         '[tech.v3.dataset]
+         '[tech.v3.dataset.column :as column])
+
+nil
+
+user=> (-> (range 4)
+    column/new-column
+    nippy/freeze
+    nippy/thaw)
+#:tech.v3.dataset{:name nil, :missing {}, :force-datatype? true, :data #array-buffer<int64>[4]
+[0, 1, 2, 3]}
+
+user=> (-> (range 4)
+    column/new-column
+    nippy/freeze
+    nippy/thaw
+    type)
+clojure.lang.PersistentArrayMap
+
+
+
+```
+
+If we do not require `tech.v3.dataset`, we avoid this broken Nippy behaviour, and under Clerk, would get some default Nippy behaviour that behaves differently.
