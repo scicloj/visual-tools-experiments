@@ -1,0 +1,7 @@
+{:paths ["src"
+         "resources"]
+ :deps  {org.scicloj/kindly-default {:mvn/version "1-alpha4"}
+         org.scicloj/clay {:mvn/version "2-alpha16"}
+         io.github.nextjournal/clerk {:mvn/version "0.13.842"}
+         org.scicloj/kind-clerk {:mvn/version "1-alpha3"}
+         org.scicloj/noj {:mvn/version "1-alpha5"}}}
