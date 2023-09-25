@@ -1,5 +1,5 @@
 
-This experiment records an interesting behaviour that emerges in a certain combination of [Clerk's](https://github.com/nextjournal/clerk) cache and [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset)'s [Columns](https://github.com/techascent/tech.ml.dataset/blob/master/src/tech/v3/dataset/impl/column.clj).
+This experiment recorded an interesting behaviour that emerged in a certain combination of [Clerk's](https://github.com/nextjournal/clerk) cache and [tech.ml.dataset](https://github.com/techascent/tech.ml.dataset)'s [Columns](https://github.com/techascent/tech.ml.dataset/blob/master/src/tech/v3/dataset/impl/column.clj).
 
 (The project name hints at [Tablecloth](https://github.com/scicloj/tablecloth) too, but it turns out it is irrelevant to the situation.)
 
@@ -43,7 +43,7 @@ notebook>
 
 ## Results
 
-In 1, 3, the Column created in `srcnotebook.clj` is displayed as a list:
+In 1, 3, the Column created in `src/notebook.clj` is displayed as a list:
 
 ```clj
 (0 1 2 3)
@@ -98,4 +98,4 @@ clojure.lang.PersistentArrayMap
 
 (In the variation above, when we do not require the `tech.v3.dataset` namespace, we avoid this Nippy behaviour, and under Clerk, would get some default Nippy behaviour that behaves differently.)
 
-Created an issue: https://github.com/techascent/tech.ml.dataset/issues/298
+Created an issue: https://github.com/techascent/tech.ml.dataset/issues/298 (that was fixed and closed later).
